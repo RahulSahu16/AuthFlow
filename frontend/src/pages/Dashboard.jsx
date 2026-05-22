@@ -7,6 +7,10 @@ export default function Dashboard() {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [loading, setLoading] = useState(false);
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordLoading, setPasswordLoading] = useState(false);
 
   const navigate = useNavigate();
 

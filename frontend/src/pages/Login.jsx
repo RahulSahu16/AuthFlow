@@ -18,7 +18,7 @@ export default function Login() {
       localStorage.setItem("accessToken", res.data.accessToken);
       localStorage.setItem("refreshToken", res.data.refreshToken);
 
-      navigate("/dashboard");
+      navigate("/");
     } catch (err) {
       alert(err.response?.data?.message || "Login failed");
     } finally {
@@ -27,62 +27,50 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-blue-100 px-4">
-      
-      <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-xl">
-        
-        {/* Header */}
-        <div className="mb-6 text-center">
-          <h2 className="text-3xl font-bold text-slate-800">Welcome to Our App</h2>
-          <p className="text-sm text-slate-500 mt-2">
-            Login to continue your journey 
-          </p>
-        </div>
+    <div className="page-shell auth-page fade-in">
+      <div className="auth-panel">
+        <div className="form-card">
+          <div className="mb-6 text-center">
+            
+            <h2 className="section-heading" style={{ fontSize: "2.5rem" }}>Welcome back</h2>
+          </div>
 
-        {/* Inputs */}
-        <div className="space-y-4">
-          
-          <input
-            type="email"
-            placeholder="Email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
+          <div className="space-y-4">
+            <input
+              type="email"
+              placeholder="Email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="input-field"
+            />
 
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="input-field"
+            />
+          </div>
 
-        </div>
-
-        {/* Button */}
-        <button
-          onClick={handleLogin}
-          disabled={loading}
-          className={`w-full mt-6 py-2 rounded-lg font-medium text-white transition 
-          ${loading 
-            ? "bg-blue-300 cursor-not-allowed" 
-            : "bg-blue-600 hover:bg-blue-700"}`}
-        >
-          {loading ? "Logging in..." : "Login"}
-        </button>
-
-        {/* Footer */}
-        <div className="mt-6 text-center text-sm text-slate-600">
-          <span>Don’t have an account? </span>
           <button
-            onClick={() => navigate("/register")}
-            className="text-blue-600 font-medium hover:underline"
+            onClick={handleLogin}
+            disabled={loading}
+            className="form-button mt-6"
           >
-            Register
+            {loading ? "Logging in..." : "Login"}
           </button>
-        </div>
 
+          <div className="mt-6 text-center" style={{ color: "var(--text-secondary)" }}>
+            <span>Don’t have an account? </span>
+            <button
+              onClick={() => navigate("/register")}
+              className="link-button"
+            >
+              Register
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

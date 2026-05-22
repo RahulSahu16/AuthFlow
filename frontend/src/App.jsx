@@ -1,7 +1,8 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Dashboard from './pages/Dashboard';
+import Home from './pages/Home';
+import Profile from './pages/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
 
 import './App.css'
@@ -11,14 +12,21 @@ function App() {
     <div className="app-shell">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Signup />} />
           <Route
-            path="/dashboard"
+            path="/profile"
             element={
               <ProtectedRoute>
-                <Dashboard />
+                <Profile />
               </ProtectedRoute>
             }
           />
