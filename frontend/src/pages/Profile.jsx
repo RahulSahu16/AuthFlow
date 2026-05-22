@@ -57,7 +57,7 @@ export default function Profile() {
   return (
     <div className="page-shell fade-in">
       <Navbar />
-      <main className="page-content">
+      <main className="page-content ">
         
 
         <div className="profile-grid">
